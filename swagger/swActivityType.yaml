@@ -1,0 +1,100 @@
+components:
+  schemas:
+
+    ActivityType:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: "ID del tipo de actividad"
+        description:
+          type: string
+          description: características del tipo de actividad"
+
+/activityType:
+  get:
+    tags: [ActivityType]
+    summary: getALL
+    description: Listado de los tipos de actividades
+
+    responses:
+        content:
+          application/json:
+  
+  post:
+    tags: [ActivityType]
+    summary: ADD
+    description: Agregar un tipo actividad
+
+    requestBody:
+      required: true
+      content:
+        application/json:
+          
+          example:
+            description: campañas
+            
+    responses:
+        content:
+          application/json:
+
+/activityType/{id}:
+  get:
+    tags: [ActivityType]
+    summary: SHOW
+    description: Mostrar un tipo actividad por su ID
+
+    parameters:
+      - in: path
+        name: id
+        schema: 
+          type: integer
+        required: true
+        description: ID del tipo actividad a buscar...
+
+
+    responses:
+        content:
+          application/json:
+
+  put:
+    tags: [ActivityType]
+    summary: UPDATE
+    description: Actualización de un tipo actividad por su ID
+      
+    parameters:
+      - in: path
+        name: id
+        schema: 
+          type: integer
+        required: true
+        description: ID del tipo actividad a actualizar......
+    
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            example:
+              description: congreso
+              
+    responses:
+        content:
+          application/json:
+
+  delete:
+    tags: [ActivityType]
+    summary: DELETE
+    description: Eliminar un tipo actividad por su ID
+
+    parameters:
+      - in: path
+        name: id
+        schema: 
+          type: integer
+        required: true
+        description: ID del tipo actividad a eliminar...
+
+    responses:
+        content:
+          application/json:   

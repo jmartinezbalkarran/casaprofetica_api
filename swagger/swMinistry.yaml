@@ -1,0 +1,111 @@
+components:
+  schemas:
+
+    Ministry:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: "ID del ministerio"
+        name:
+          type: string
+          description: Nombre del ministerio"  
+        description:
+          type: string
+          description: description del ministerio"
+        opening_date:
+          format: date
+          description: "Fecha de inicio del ministerio"
+        
+/ministries:
+  get:
+    tags: [Ministry]
+    summary: getALL
+    description: Listado del ministerio
+
+    responses:
+        content:
+          application/json:
+  
+  post:
+    tags: [Ministry]
+    summary: ADD
+    description: Agregar un ministerio
+
+    requestBody:
+      required: true
+      content:
+        application/json:
+          
+          example:
+            name: "Gorreros"
+            description: ministerio
+            opening_date: "2025-02-15"
+            
+
+    responses:
+        content:
+          application/json:
+
+/ministries/{id}:
+  get:
+    tags: [Ministry]
+    summary: SHOW
+    description: Mostrar un ministerio por su ID
+
+    parameters:
+      - in: path
+        name: id
+        schema: 
+          type: integer
+        required: true
+        description: ID del ministerio a buscar...
+
+
+    responses:
+        content:
+          application/json:
+
+  put:
+    tags: [Ministry]
+    summary: UPDATE
+    description: Actualización de un ministerio por su ID
+      
+    parameters:
+      - in: path
+        name: id
+        schema: 
+          type: integer
+        required: true
+        description: ID del ministerio a actualizar......
+    
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            example:
+              name: "Gorreros"
+              description: ministerio
+              opening_date: "2025-02-15"
+
+    responses:
+        content:
+          application/json:
+
+  delete:
+    tags: [Ministry]
+    summary: DELETE
+    description: Eliminar un ministerio por su ID
+
+    parameters:
+      - in: path
+        name: id
+        schema: 
+          type: integer
+        required: true
+        description: ID del ministerio a eliminar...
+
+    responses:
+        content:
+          application/json:   

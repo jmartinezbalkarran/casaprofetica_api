@@ -1,0 +1,100 @@
+components:
+  schemas:
+
+    Zone:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: "ID de la zona"
+        name:
+          type: string
+          description: nombre de la zona"
+
+/zones:
+  get:
+    tags: [Zone]
+    summary: getALL
+    description: Listado de las zonas
+
+    responses:
+        content:
+          application/json:
+  
+  post:
+    tags: [Zone]
+    summary: ADD
+    description: Agregar una zona
+
+    requestBody:
+      required: true
+      content:
+        application/json:
+          
+          example:
+            name: Cinco
+
+    responses:
+        content:
+          application/json:
+
+/zones/{id}:
+  get:
+    tags: [Zone]
+    summary: SHOW
+    description: Mostrar una zona por su ID
+
+    parameters:
+      - in: path
+        name: id
+        schema: 
+          type: integer
+        required: true
+        description: ID de la zona a buscar...
+
+
+    responses:
+        content:
+          application/json:
+
+  put:
+    tags: [Zone]
+    summary: UPDATE
+    description: Actualización de una zona por su ID
+      
+    parameters:
+      - in: path
+        name: id 
+        schema: 
+          type: integer
+        required: true
+        description: ID de la zona a actualizar......
+    
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            example:
+              name: "seis"
+              
+    responses:
+        content:
+          application/json:
+
+  delete:
+    tags: [Zone]
+    summary: DELETE
+    description: Eliminar una zona por su ID
+
+    parameters:
+      - in: path
+        name: id
+        schema: 
+          type: integer
+        required: true
+        description: ID de la zona a eliminar...
+
+    responses:
+        content:
+          application/json:   

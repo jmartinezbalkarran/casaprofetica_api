@@ -1,0 +1,111 @@
+components:
+  schemas:
+
+    Assist:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: "ID de la asistencia"
+        activity_id:
+          type: integer
+          description: ID de la actividad asistida"
+        member_id:
+          type: integer
+          description: "ID del miembro que asiste a la actividad "
+        created_at:
+          type: date
+          description: "Fecha de creación de la asistencia"
+        updated_at:
+          type: date
+          description: "Fecha de la ultima actualización de la asistencia"  
+
+/assists:
+  get:
+    tags: [Assist]
+    summary: getALL
+    description: Listado de asistencias
+
+    responses:
+        content:
+          application/json:
+  
+  post:
+    tags: [Assist]
+    summary: ADD
+    description: Agregar una asistencia
+
+    requestBody:
+      required: true
+      content:
+        application/json:
+          
+          example:
+            activity_id: "2"
+            member_id: "5"
+
+    responses:
+        content:
+          application/json:
+
+/assists/{id}:
+  get:
+    tags: [Assist]
+    summary: SHOW
+    description: Mostrar una asistencia por su ID
+
+    parameters:
+      - in: path
+        name: id
+        schema: 
+          type: integer
+        required: true
+        description: ID de la asistencia a buscar...
+
+
+    responses:
+        content:
+          application/json:
+
+  put:
+    tags: [Assist]
+    summary: UPDATE
+    description: Actualización de una asistencia por su ID
+      
+    parameters:
+      - in: path
+        name: id
+        schema: 
+          type: integer
+        required: true
+        description: ID de la asistencia a actualizar......
+    
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            example:
+              activity_id: "1"
+              member_id: "8"
+
+    responses:
+        content:
+          application/json:
+
+  delete:
+    tags: [Assist]
+    summary: DELETE
+    description: Eliminar una asistencia por su ID
+
+    parameters:
+      - in: path
+        name: id
+        schema: 
+          type: integer
+        required: true
+        description: ID de la asistencia a eliminar...
+
+    responses:
+        content:
+          application/json:   

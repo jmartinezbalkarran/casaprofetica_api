@@ -1,0 +1,129 @@
+components:
+  schemas:
+
+    Activity:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: "ID de la actividad"
+        description:
+          type: string
+          description: description de la actividad"
+        start_date:
+          format: date
+          description: "Fecha de inicio de la actividad"
+        end_date:
+          format: date
+          description: "Fecha de culminación de la actividad"
+        start_time:
+          format: time
+          description: "Hora de inicio de la actividad"
+        end_time:
+          format: time
+          description: "Hora de culminación de la actividad" 
+        address:
+          format: string
+          description: dirección de la actividad     
+        activity_type_id: 
+          format: integer
+          description: "ID del tipo de actividad al cual pretense esta actividad "
+/activities:
+  get:
+    tags: [Activity]
+    summary: getALL
+    description: Listado de actividades
+
+    responses:
+        content:
+          application/json:
+  
+  post:
+    tags: [Activity]
+    summary: ADD
+    description: Agregar una actividad
+
+    requestBody:
+      required: true
+      content:
+        application/json:
+          
+          example:
+            description: servicio de calle
+            start_date: "2025-02-15"
+            end_date: "2025-02-20"
+            start_time: "17:00:00"
+            end_time: "19:00:00"
+            address: "villa salud"
+            activity_type_id: "2"
+
+    responses:
+        content:
+          application/json:
+
+/activities/{id}:
+  get:
+    tags: [Activity]
+    summary: SHOW
+    description: Mostrar una actividad por su ID
+
+    parameters:
+      - in: path
+        name: id
+        schema: 
+          type: integer
+        required: true
+        description: ID de la actividad a buscar...
+
+
+    responses:
+        content:
+          application/json:
+
+  put:
+    tags: [Activity]
+    summary: UPDATE
+    description: Actualización de una actividad por su ID
+      
+    parameters:
+      - in: path
+        name: id
+        schema: 
+          type: integer
+        required: true
+        description: ID de la actividad a actualizar......
+    
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            example:
+              description: congreso
+              start_date: "2025-06-15"
+              end_date: "2025-06-20"
+              start_time: "7:00:00"
+              end_time: "12:00:00"
+              address: "la floresta"
+              activity_type_id: "3"
+
+    responses:
+        content:
+          application/json:
+
+  delete:
+    tags: [Activity]
+    summary: DELETE
+    description: Eliminar una actividad por su ID
+
+    parameters:
+      - in: path
+        name: id
+        schema: 
+          type: integer
+        required: true
+        description: ID de la actividad a eliminar...
+
+    responses:
+        content:
+          application/json:   

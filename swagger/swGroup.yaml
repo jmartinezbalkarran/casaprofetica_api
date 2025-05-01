@@ -1,0 +1,110 @@
+components:
+  schemas:
+
+    Group:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: "ID del grupo"
+        name:
+          type: string
+          description: nombre del grupo"
+        address:
+          type: string
+          description: dirección del grupo"
+        zone_id:
+          type: integer
+          description: "ID de la zone el cual pertenece el grupo"
+
+/groups:
+  get:
+    tags: [Group]
+    summary: getALL
+    description: Listado del grupo
+
+    responses:
+        content:
+          application/json:
+  
+  post:
+    tags: [Group]
+    summary: ADD
+    description: Agregar un grupo
+
+    requestBody:
+      required: true
+      content:
+        application/json:
+          
+          example:
+            name: Los levitas
+            address: calle miranda
+            zone_id: "4"
+
+    responses:
+        content:
+          application/json:
+
+/groups/{id}:
+  get:
+    tags: [Group]
+    summary: SHOW
+    description: Mostrar un grupo por su ID
+
+    parameters:
+      - in: path
+        name: id
+        schema: 
+          type: integer
+        required: true
+        description: ID del grupo a buscar...
+
+
+    responses:
+        content:
+          application/json:
+
+  put:
+    tags: [Group]
+    summary: UPDATE
+    description: Actualización de un grupo por su ID
+      
+    parameters:
+      - in: path
+        name: id
+        schema: 
+          type: integer
+        required: true
+        description: ID del grupo a actualizar......
+    
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            example:
+              name: "Sinai"
+              address: "Brisa las campiña"
+              zone_id: "2"
+
+    responses:
+        content:
+          application/json:
+
+  delete:
+    tags: [Group]
+    summary: DELETE
+    description: Eliminar un grupo por su ID
+
+    parameters:
+      - in: path
+        name: id
+        schema: 
+          type: integer
+        required: true
+        description: ID del grupo a eliminar...
+
+    responses:
+        content:
+          application/json:   

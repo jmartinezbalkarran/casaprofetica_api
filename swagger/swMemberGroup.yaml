@@ -1,0 +1,57 @@
+components:
+  schemas:
+
+    MemberGroup:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: "ID de la asignación del miembro al grupo "
+        member_id:
+          type: integer
+          description: ID del miembro"
+        group_id:
+          type: integer
+          description: "ID del grupo"
+        created_at:
+          format: date
+          description: "Fecha de asignación del miembro al grupo"
+        updated_at:
+          format: date
+          description: "Fecha de ultima actualización de la asignación del miembro al grupo"  
+
+/members-groups:
+  post:
+    tags: [MemberGroup]
+    summary: ADD
+    description: Asignación de un miembro a un grupo
+
+    requestBody:
+      required: true
+      content:
+        application/json:
+          
+          example:
+            member_id: "5"
+            group_id: "2"
+
+    responses:
+        content:
+          application/json:
+
+  delete:
+    tags: [MemberGroup]
+    summary: DELETE
+    description: Eliminar un registro por su ID
+
+    requestBody:
+      required:
+      content:
+        application/json:
+          example:
+            member_id: "5"
+            group_id: "2"
+
+    responses:
+        content:
+          application/json:   

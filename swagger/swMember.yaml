@@ -1,0 +1,112 @@
+components:
+  schemas:
+
+    Member:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: "ID del miembro"
+        name:
+          type: string
+          description: nombre del miembro"
+        lastname:
+          type: string
+          description: apellido del miembro"
+        card:
+          type: string
+          description: cédula del miembro"
+        group_id:
+          type: integer
+          description: "ID del grupo al cual pertenece el miembro"
+
+/members:
+  get:
+    tags: [Member]
+    summary: getALL
+    description: Listado de todos Miembros 
+
+    responses:
+        content:
+          application/json:
+           
+  post:
+    tags: [Member]
+    summary: ADD
+    description: Agregar un Miembro
+    requestBody:
+      required: true
+      content:
+        application/json:
+        
+          example:
+            name: "Jose"
+            lastname: "Yorden"
+            card: "4565025"
+            group_id: "1"
+    
+    responses:
+        content:
+          application/json:
+            
+/members/{id}:
+  get:
+    tags: [Member]
+    summary: SHOW
+    description: Listar un Miembro por su ID
+
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: ID del miembro a buscar...  
+    
+    responses:
+        content:
+          application/json:
+
+  put:
+    tags: [Member]
+    summary: UPDATE
+    description: Actualizar un Mimbro
+
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: ID del miembro a actualizar...   
+    
+    requestBody:
+      content:
+        application/json:
+          
+          example:
+            name: "Pedro"
+            lastname: "Lara"
+            card: "29345672"
+            group_id: "2"
+   
+    responses:
+        content:
+          application/json:
+
+  delete:
+    tags: [Member]
+    summary: DELETE
+    description: Eliminación de Miembro
+    
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: ID del miembro a eliminar... 
+    
+    responses:
+        content:
+          application/json:    
