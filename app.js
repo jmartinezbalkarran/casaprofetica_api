@@ -11,6 +11,8 @@ import routeActivities from "./route/rActivity.js"
 import routeActivityType from "./route/rActivityType.js"
 import routeAssist from "./route/rAssist.js"
 import routeMemberGroup from "./route/rMemberGroup.js"
+import cors from 'cors'
+
 const app = express()
 const port = process.env._PORT
 
@@ -18,6 +20,7 @@ const port = process.env._PORT
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerConfig))
+app.use(cors())
 
 app.use(routeMain)
 app.use(routeMember)
